@@ -17,7 +17,7 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           port: 22
           script: |
-            cd ~/hello_fastapi
+            cd ~/ec2_git
             git pull origin master
             source venv/bin/activate
             pip install --upgrade pip
