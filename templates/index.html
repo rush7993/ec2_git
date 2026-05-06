@@ -7,8 +7,16 @@
 </head>
 <body>
     <div>
-        <h1>Hello FastAPI</h1>
-        <P>오늘의 운세: {{ fortuneToday }}</P>
+       
+        <p>이름: 박다정</p>
+        <h2>공지사항</h2>
+        <ul>
+            {% for item in noticeList %}
+            <li>{{ item.content }}</li>
+            {% endfor %}
+        </ul>
+
+
     </div>
 </body>
 </html>
