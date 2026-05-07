@@ -14,7 +14,7 @@ def home(request:Request):
     # jinja2 템플릿 엔진이 index.html 문서를 (읽기x) 해석해서 클라이언트 웬문서에 출력
     result = templates.TemplateResponse("index.html", {
         "request": request,
-        "fortuneToday":"동쪽으로 가면  귀인을 만나요"
+        "fortuneToday":"동쪽으로 가면  귀인을 만나요",
         "noticeList": [
                 {"content": "서버 점검 예정"},
                 {"content": "신규 기능 업데이트"},
