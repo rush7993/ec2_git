@@ -15,6 +15,11 @@ def home(request:Request):
     result = templates.TemplateResponse("index.html", {
         "request": request,
         "fortuneToday":"동쪽으로 가면  귀인을 만나요"
+        "noticeList": [
+                {"content": "서버 점검 예정"},
+                {"content": "신규 기능 업데이트"},
+                {"content": "이벤트 참여 안내"}
+            ]
     })
    
 
