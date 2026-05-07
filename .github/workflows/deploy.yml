@@ -1,0 +1,26 @@
+#
+name: fastapi를 aws linux에 배포하기
+
+on:
+  push:
+    branches: ["main"] # main 브렌치에 push될 때 아래의 job 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh 원격 명령
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          port: 22
+          script: |
+            cd ~/ec2_git
+            git pull origin main
+            source venv39/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+            fuser -k 8000/tcp || true
+            nohup python3.9 -m uvicorn main:app --host 0.0.0.0 --port 8000 > app.log 2>&1 &
